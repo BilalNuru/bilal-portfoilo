@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilal's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      background-color: #FFE300;
+      color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    header p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .gallery-container {
+      position: relative;
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    .gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+      background-color: #999;
+      border-radius: 4px;
+    }
+    .gallery img {
+      flex: 0 0 auto;
+      height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 1;
+    }
+    .arrow.left {
+      left: 0;
+    }
+    .arrow.right {
+      right: 0;
+    }
+    .contact {
+      background-color: #f9f9f9;
+      color: #333333;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .contact a {
+      color: #0077cc;
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    .gallery div {
+      text-align: center;
+      min-width: 220px;
+    }
+    h2:hover, p:hover, a:hover {
+      color: #ff6600;
+      transition: color 0.3s ease;
+    }
+    header h1:hover {
+      color: #fff;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    header p,
+    section h2,
+    section p,
+    .contact h2,
+    .contact p,
+    .contact a,
+    footer {
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity: 0;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes fadeInImage {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .gallery div {
+      animation: fadeInImage 1s ease-out forwards;
+      opacity: 0;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+    header p:hover {
+      font-weight: 700;
+      background-color: #f0f0f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+    .lightbox-arrow {
+      font-size: 2rem;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bilal Nuru</h1>
+    <p>Graphic Designer | Front-End Developer</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate graphic designer and self-taught web developer with a creative eye
+      for design and strong skills in HTML & CSS. I love turning ideas into beautiful visuals.
+    </p>
+    <p>
+      I have over 2 years of hands-on experience in graphic design, working with tools like Adobe Photoshop, PixelLab, and Canva to create professional-quality visuals. I specialize in social media content, posters, and branding design. My journey began with a passion for art and evolved into a strong command of both mobile and desktop design platforms.
+    </p>
+    <p>
+      I’m committed to continuous learning and always eager to take on new design challenges that push creativity and deliver impactful results.
+    </p>
+  </section>
+
+  <section>
+    <h2>My Work</h2>
+    <div class="gallery-container">
+      <button class="arrow left" onclick="scrollGallery(-1)">&#10094;</button>
+      <div class="gallery" id="gallery">
+        <div><img src="images/design1.jpg" alt="Design 1" onclick="openLightbox(0)" /><p>Design 1</p></div>
+        <div><img src="images/design2.jpg" alt="Design 2" onclick="openLightbox(1)" /><p>Design 2</p></div>
+        <div><img src="images/design3.jpg" alt="Design 3" onclick="openLightbox(2)" /><p>Design 3</p></div>
+        <div><img src="images/design4.jpg" alt="Design 4" onclick="openLightbox(3)" /><p>Design 4</p></div>
+        <div><img src="images/design5.jpg" alt="Design 5" onclick="openLightbox(4)" /><p>Design 5</p></div>
+        <div><img src="images/design6.jpg" alt="Design 6" onclick="openLightbox(5)" /><p>Design 6</p></div>
+        <div><img src="images/design7.jpg" alt="Design 7" onclick="openLightbox(6)" /><p>Design 7</p></div>
+      </div>
+      <button class="arrow right" onclick="scrollGallery(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-arrow" onclick="navigateLightbox(-1)">&#10094;</button>
+    <img id="lightbox-img" src="" alt="Full View" />
+    <button class="lightbox-arrow" onclick="navigateLightbox(1)">&#10095;</button>
+  </div>
+
+  <section>
+    <h2>Client Testimonials</h2>
+    <p><strong>Kalid Suleyman:</strong> "Bilal is one of the most creative designers I've worked with. His designs are professional, unique, and always delivered on time."</p>
+    <p><strong>Abdu zakir :</strong> "Working with Bilal was amazing! He truly understands what clients need and brings their vision to life beautifully."</p>
+    <p><strong>Jemal Faris:</strong> "I’m impressed by Bilal’s dedication and creativity. He handled our branding project with great skill and professionalism."</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:ibnunuru7847@gmail.com">ibnunuru7847@gmail.com</a></p>
+    <p>Phone: <a href="tel:+251965619207">+251965619207</a></p>
+    <p>Instagram: <a href="https://instagram.com/bilal_nuruu" target="_blank">@bilal_nuruu</a></p>
+    <p>Telegram: <a href="https://t.me/bilal_nuru" target="_blank">@bilal_nuru</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Bilal Nuru. All rights reserved.
+  </footer>
+
+  <script>
+    const galleryImages = [
+      "images/design1.jpg",
+      "images/design2.jpg",
+      "images/design3.jpg",
+      "images/design4.jpg",
+      "images/design5.jpg",
+      "images/design6.jpg",
+      "images/design7.jpg"
+    ];
+    let currentIndex = 0;
+
+    function scrollGallery(direction) {
+      const gallery = document.getElementById('gallery');
+      const scrollAmount = 300;
+      gallery.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById('lightbox-img').src = galleryImages[index];
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function navigateLightbox(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+      if (currentIndex >= galleryImages.length) currentIndex = 0;
+      document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+    }
+  </script>
+</body>
+</html>
